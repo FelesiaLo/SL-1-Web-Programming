@@ -72,7 +72,15 @@
                 <td><b><?php echo $_SESSION['pos']?></b></td>
 
                 <td>Foto Profil</td>
-                <td><img src= "<?php echo $_SESSION['fotoSession']; ?>"/></td>
+                <td>
+                <?php
+                    $files = glob("upload/*.*");
+                    for ($i = 0; $i < count($files); $i++) {
+                        $image = $files[$i];
+                        echo '<img src="' . $image . '"/>' ."";
+                    }
+                ?>    
+                </td>
             </tr>
         </table>
     </div>

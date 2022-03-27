@@ -14,7 +14,7 @@
 
     <?php session_start(); ?>
 
-    <form action="registerProcess.php" method="POST">
+    <form action="registerProcess.php" method="POST" enctype="multipart/form-data">
         <table>
             <caption>Register</caption>
             <tr>

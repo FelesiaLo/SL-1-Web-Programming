@@ -22,12 +22,6 @@
         $pass1 = $_POST['pass1'];
         $pass2 = $_POST['pass2'];
 
-        $fileName = $_FILES['fotoProfil']['name'];
-        $tempName = $_FILES['fotoProfil']['tmp_name'];
-    
-        $dirTujuan = "upload/";
-        $upload = move_uploaded_file($tempName, $dirTujuan.$fileName);
-
         /*echo '<pre>';
         var_dump($_SESSION);
         echo '</pre>';
@@ -35,6 +29,20 @@
         
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             if($pass1 == $pass2){
+
+                $fileName = $_FILES['fotoProfil']['name'];
+                $tempName = $_FILES['fotoProfil']['tmp_name'];
+    
+                $dirTujuan = "upload/";
+                $upload = move_uploaded_file($tempName, $dirTujuan.$fileName);
+
+                /*if($upload){
+                    echo "File berhasil terupload";
+                    echo "<a href='".$dirTujuan.$fileName."'>".$fileName."</a>";
+                }else{
+                    echo "Gagal Upload";
+                }*/
+
                 header("location:index.php");
                 $_SESSION['depan'] = $namaDepan;
                 $_SESSION['tengah'] = $namaTengah;
@@ -47,7 +55,7 @@
                 $_SESSION['hp'] = $telp;
                 $_SESSION['alamatSession'] = $alamat;
                 $_SESSION['pos'] = $kodePos;
-                $_SESSION['fotoSession'] = $dirTujuan.$fileName;
+                $_SESSION['fotoSession'] = $upload;
                 $_SESSION['usernameSession'] = $username;
                 $_SESSION['passwordSession'] = $pass1;
             }else{
